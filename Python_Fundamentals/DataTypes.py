@@ -91,6 +91,40 @@ print(S[-2])
  doubles = [c*2 for c in 'spam'] # Repeat characters in a string
  print(doubles)
 
+ # List Basic Operations
+
+ print(len([1,2,3])) # Length
+ print([1,2,3] + [4,5,6]) # Concatination
+ print(['NI!']*4 ) # Repetition
+ print([1,2,3] + "34") # Raise error, convert "34" into list or the list into string.
+  
+  # List Iteration and Comprehensions
+  print( 3 in [1,2,3]) # Check membership
+  for x in [1,2,3]:    # Iteration
+      print(x,end='')
+  print (c * 4 for c in 'SPAM') # List Comprehension
+  
+  # Index and slice assignments
+  L = ['spam', 'Spam', 'SPAM']
+  L[1] = 'eggs' # Index assignment
+  L[0:2] = ['eat', 'more'] # Slice assignment
+   
+   # Common List methods
+  L = [1,2]
+  L.extend([3,4,5]) # Add many items at end
+  L.pop()  # Delete and return last item
+  L.reverse() # In-place reversal method
+  L = ['spam','eggs','ham']
+  L.index('eggs')  # Index of an object(serach/find)
+  L.insert(1,'toast') # Insert at position
+  L.remove('eggs') # Delete by by value
+  L.pop(1) # Delete by position
+  L.count('spam') # Number of occurrences
+  del L[0] # Delete one item
+  del L[1:] # Delete an entire section
+
+  L = ['Already','got','one']
+  L[1:] = [] # Result is ['Alerady']
 
  #DICTIONARY DATA TYPES
 
@@ -129,6 +163,19 @@ for key in ks:
 for key in sorted(D):
     print(key, '=>', D[key])
 
+# Changing Dectionary in Place
+D = {'eggs':3, 'spam':2, 'ham':1}
+D['ham'] = ['girl','bake','fry'] # Change entry(vlaue=list)
+del D['eggs'] # Delete entry
+D['brunch'] = 'Bacon'  # Add new entry
+
+D = list(zip(['a', 'b', 'c']), [1,2,3])) # Zip together keys and values
+D = dict(zip(['a', 'b', 'c']), [1,2,3])) # Make a dict from zip result
+D = {x: x ** 2 for x in [1,2,3,4]} # Dictionary comprehension 
+D = {c: c * 4 for c in 'SPAM'}    # Loop over any iterable
+D = {k: v for (k,v) in zip(['a','b','c'], [1,2,3,4])}
+D = {c.lower(): c + '!' for c in ['SPAM', 'EGGS','HAM']}
+
 
 # TUPPLE DATA TYPES
 
@@ -139,7 +186,7 @@ print(T[0]) # print value at a given index
 
 #Type specific methods
 print(T.index(4)) # prints index of '4' 
-print(T.count(4)  # prints frequency of '4'
+print(T.count(4)) # prints frequency of '4'
 
 T[0] = 2
 print(T[0]) # raise error, tuple is immutable
@@ -148,9 +195,28 @@ T = (2,) + T[1:]
 print(T) # print without error, because new tuple object is created
 
 T = 'spam', 3.0, [11,22,33]
-print(T[1] # prints '3.0'
+print(T[1])# prints '3.0'
 print( T[2][1]) # prints '22'
 print(T.append(4)) # raise error, tuple is immutable
+
+print((1,2) + (3,4)) # Concatenation
+print((1,2)*2) # Repetition
+T = (1,2,3,4)
+print(T[0], T[1:3]) # Indexing and slicing
+
+T = ('cc','aa','dd', 'bb')
+tmp = list(T) # Make a list from a tuple's items
+tmp.sort()    # Sort the list
+T = tuple(tmp) # Make a tuple from the list's items
+sorted(T)     # Or use the sorted built-in, and save two steps
+L = [x + 20 for x in T] # Comprehension converts tuple to list
+T = (1,[2,3],4)
+T[1] = 'spam' # This fails: can't change tuple itself
+T[1][0] = 'spam' # This works: can change mutables inside
+
+# Named Tuples
+bob = ('Bob',40.5,['dev','mgr']) # Tuple record
+bob[0], bob[2] # Access by positon
 
 
 # FILES
